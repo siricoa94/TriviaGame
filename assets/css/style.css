@@ -12,7 +12,7 @@ body {
     top: 2%;
     left: 10%;
 }
-#gameTitle {
+#gameTitleContainer {
     position: absolute;
     font-size: 125%;
     text-align: center;
@@ -32,17 +32,11 @@ body {
     text-align: center;
     left: 35%;
     top: 40%;
-    background-color: yellow;
-    width: 20%;
-    height: 20%;
 }
 #questionAnswer {
     position: absolute;
     text-align: center;
     left: 35%;
     top: 60%;
-    background-color: green;
-    width: 20%;
-    height: 20%;
 
 }
