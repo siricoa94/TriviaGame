@@ -1,0 +1,48 @@
+body {
+    background-color: blue;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+#container {
+    position: absolute;
+    width: 80%;
+    height: 95%;
+    background-color:red;
+    top: 2%;
+    left: 10%;
+}
+#gameTitle {
+    position: absolute;
+    font-size: 125%;
+    text-align: center;
+    left: 28%;
+    top: 2%;
+
+}
+#timeBoard {
+    position: absolute;
+    font-size: 80%;
+    text-align: center;
+    left: 40%;
+    top: 25%;
+}
+#questionAsk {
+    position: absolute;
+    text-align: center;
+    left: 35%;
+    top: 40%;
+    background-color: yellow;
+    width: 20%;
+    height: 20%;
+}
+#questionAnswer {
+    position: absolute;
+    text-align: center;
+    left: 35%;
+    top: 60%;
+    background-color: green;
+    width: 20%;
+    height: 20%;
+
+}
