@@ -1,128 +1,158 @@
-$(document).ready(function () { 
-    var timerNumber = 5;
-    var intervalId;
-    var string="";
+$("#start").on("click", function(){
+    $("#start").remove();
+    game.loadQuestion();
+})
 
-    var questionObject = {
-        questionOne:
-        {
-            question: "What river is George Washington known for crossing?",
-            answerOne: "The Potomec",
-            answerTwo: "River Thames",
-            answerThree: "The Nile",
-            answerFour: "The Delaware"
-        },
-        questionTwo: {
-                question: "What did Abraham Lincoln apparently grow up in?",
-                answerOne: "A penthouse overlooking central park",
-                answerTwo: "A cave",
-                answerThree: "On a farm",
-                answerFour: "In a log cabin"
+var questions = [{
+    question: "What River did George Washington Cross?",
+    answers: ["The Delaware","The Nile","The Passaic","The Tibris"],
+    correctAnswer: "The Delaware",
+},
+{
+    question: "What River did George Washington Cross?",
+    answers: ["The Delaware","The Nile","The Passaic","The Tibris"],
+    correctAnswer: "The Delaware",
+},
+{
+    question: "What River did George Washington Cross?",
+    answers: ["The Delaware","The Nile","The Passaic","The Tibris"],
+    correctAnswer: "The Delaware",
+},
+{
+    question: "What River did George Washington Cross?",
+    answers: ["The Delaware","The Nile","The Passaic","The Tibris"],
+    correctAnswer: "The Delaware",
+}];
+
+var game = {
+    questions:questions,
+    currentQuestion:0,
+    counter: 30,
+    correct:0,
+    incorrect:0,
+    countdown: function(){
+        game.counter--;
+        $("#timeLapse").html(game.counter);
+        if(game.counter<=0){
+            console.log("Time up!")
+            game.timeUp();
         }
-    }
-    var correctAnswerObject = {
-        questionOne: "answerFour",
-        questionTwo: "answerFour"
-    }
-$("#question").text("Start")
-$("#question").on("click" , function () {
 
-    function runObj(obj){
+    },
+    loadQuestion: function(){
+        timer = setInterval(game.countdown, 1000);
+        $("#questionAnswer").html("<h2>"+questions[game.currentQuestion].question+"</h2>");
+        for(var i=0; i<questions[game.currentQuestion].answers.length;i++){
+            $("#questionAnswer").append('<button class="answer-button"id="button"+id+"data-name"'+questions[game.currentQuestion].answers[i]+'">'+questions[game.currentQuestion].answers[i]+'</button>');
+        }
+
+    },
+    nextQuestion: function(){
+
+    },
+    timeUp: function(){
+
+    },
+    results: function(){
+
+    },
+    clicked:function(){
+
+    },
+    answeredCorrectly: function(){
+
+    },
+    answeredIncorrectly: function(){
+
+    },
+    reset: function(){
+
+    },
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $(document).ready(function () { 
+
+//     var timerNumber = 5;
+//     var intervalId = 0;
+//     var string="";
+//     var delay = 1000;
+
+//     var questionArray = [
+//         {
+//             question: "What river is George Washington known for crossing?",
+//             answerOne: "The Potomec",
+//             answerTwo: "River Thames",
+//             answerThree: "The Nile",
+//             answerFour: "The Delaware"
+//         },
+//             {
+//                 question: "What did Abraham Lincoln apparently grow up in?",
+//                 answerOne: "A penthouse overlooking central park",
+//                 answerTwo: "A cave",
+//                 answerThree: "On a farm",
+//                 answerFour: "In a log cabin"
+//         }
+//     ]
+//     var correctAnswerObject = {
+//         questionOne: "answerFour",
+//         questionTwo: "answerFour"
+//     }
+//     console.log(questionArray);
+
         
-        for (var key in obj) {
-  
 
-            for (var key2 in obj[key]) {
-                $("#" + key2).text(obj[key][key2])
-                // implement on click function for answers.
-                if(key2 != "question"){ // if the key is an answer 
-                    $("#" + key2).on("click", function(){
-                        if(correctAnswerObject[key] == key2) {
-                            $("#question").text("Good job! you selected the right answer: " + obj[key][key2]);
-                        }
-            
-                    
-                
-                    
+//     $("#question").text("Start")
+//     $("#question").on("click" , function () {
+//         for(i = 0; i < questionArray.length; i++){
+//             console.log(questionArray[i])
 
-                    })
-
-                }
-
-                console.log("key 1 and key 2: " + obj[key][key2])
-            }
-            // pause loop, wait for answer to question, get to click. timer?
-        }
-    }
-
-    runObj(questionObject)
-})
-//         // for(var questionz in questionObject){
-//         //     string += questionObject;
-//         //     console.log(string);
-//         // }
-//     $("#questionAsk").text("Start")
-//     $("#questionAsk").on("click" , function () {
-//         $("#questionAsk").text(questionObject.questionOne.georgeQuestion)
-//         $("#questionAnswerSlotOne").text(questionObject.questionOne.georgeWrongAnswerOne)
-//         $("#questionAnswerSlotOne").on("click" , function () {
-//             stop();
-//             $("#timeLapse").html("Time Remaining: "+ timerNumber);
-//             $("#questionAsk").text("Sorry, you selected the wrong answer, the correct answer was "+questionObject.questionOne.georgeRightAnswer);
-//         })
-//         run();
-//         $("#questionAnswerSlotTwo").text(questionObject.questionOne.georgeWrongAnswerThree)
-//         $("#questionAnswerSlotTwo").on("click" , function () {
-//             stop();
-//             $("#timeLapse").html("Time Remaining: "+ timerNumber);
-//             $("#questionAsk").text("Sorry, you selected the wrong answer, the correct answer was "+ questionObject.questionOne.georgeRightAnswer);
-//         })
-//         run();
-//         $("#questionAnswerSlotThree").text(questionObject.questionOne.georgeRightAnswer)
-//         $("#questionAnswerSlotThree").on("click" , function () {
-//             stop();
-//             $("#timeLapse").html("Time Remaining: "+ timerNumber);
-//             $("#questionAsk").text("Good job! you selected the right answer: " + questionObject.questionOne.georgeRightAnswer);
-//         })
-//         run();
-//         $("#questionAnswerSlotFour").text(questionObject.questionOne.georgeWrongAnswerTwo)
-//         $("#questionAnswerSlotFour").on("click" , function () {
-//             stop();
-//             $("#timeLapse").html("Time Remaining: "+ timerNumber);
-//             $("#questionAsk").text("Sorry, you selected the wrong answer, the correct answer was "+ questionObject.questionOne.georgeRightAnswer);
-//         })
-//         run();
-
-
-
-//         function run() {
-//             clearInterval(intervalId);
-//             intervalId = setInterval(decrement, 1000);
-//           }
-      
-//           function decrement() {
-      
-//             timerNumber--;
-      
-//             $("#timeLapse").html("Time Remaining: " + timerNumber);
-      
-//             if (timerNumber === 0) {
-//                 stop();
-//                 $("#timeLapse").html("Time Remaining: "+ timerNumber);
-//                 $("#questionAsk").text("Sorry, you ran out of time, the correct answer was "+questionObject.questionOne.georgeWashington.georgeRightAnswer);
-                
-              
-//             }
-//             run();
-//           }
-//           run();
-//     })
-
-// // Function created to stop timer interval from counting down to be called upon above.
-//     function stop() {
-
-//         clearInterval(intervalId);
-//       }
+//         }
     
     
-})
+    
+    
+    
+    
+    
+    
+
+//     })   
+// })
+    // console.log(questionArray);
+    // $("#question").text(questionArray[0].question);
+    // $("#answerOne").text(questionArray[0].answerOne);
+    // $("#answerTwo").text(questionArray[0].answerTwo);
+    // $("#answerThree").text(questionArray[0].answerThree);
+    // $("#answerFour").text(questionArray[0].answerFour);
