@@ -60,6 +60,9 @@ var game = {
 
     },
     timeUp: function(){
+        clearInterval(timer);
+        $("#timeLapse").html("<h2>OUT OF TIME</h2>");
+        $("#questionAnswer").append("<h3>The Correct Answer was: "+questions.game.currentQuestion.correctAnswer +"</h3>");
 
     },
     results: function(){
@@ -93,6 +96,7 @@ var game = {
         clearInterval(timer);
         game.incorrect++;
         $("#questionAnswer").html("<h2>WRONG</h2>");
+        $("#questionAnswer").append("<h3>The Correct Answer was: "+questions[game.currentQuestion].correctAnswer +"</h3>");
         if(game.currentQuestion==questions.length-1){
             setTimeout(game.results,3*1000);
         } else {
