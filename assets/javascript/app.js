@@ -1,14 +1,18 @@
+// on click function for the start button to load the first question and remove the start button
 $("#start").on("click", function(){
     $("#start").remove();
     game.loadQuestion();
 })
+// on click function for the answer button to run game.clicked(e) "e" being the target of the click.
 $(document).on("click",".answer-button",function(e){
     game.clicked(e);
 
 })
+// resets the game on click of the reset button
 $(document).on("click","#reset",function(){
     game.reset();
 })
+// a variable named questions which is an array that contains objects. some of which also contain arrays.
 var questions = [{
     question: "What River did George Washington Cross?",
     answers: ["the Delaware","The Nile","The Passaic","The Tibris"],
@@ -60,7 +64,7 @@ var questions = [{
     answers: ["Andy's house","The north pole","The equator","Area 51"],
     correctAnswer: "The north pole",
 }];
-
+// the variable game holds all the function values and game functions.
 var game = {
     questions:questions,
     currentQuestion:0,
@@ -68,6 +72,7 @@ var game = {
     correct:0,
     incorrect:0,
     unanswered: 0,
+    // countdown function to decriment time.
     countdown: function(){
         game.counter--;
         $("#timeLapse").html("time remaining: " + game.counter);
@@ -77,6 +82,7 @@ var game = {
         }
 
     },
+    // function that loads questions and sets time decriment from 30 down by a second interval
     loadQuestion: function(){
         timer = setInterval(game.countdown, 1000);
 
@@ -88,6 +94,7 @@ var game = {
         }
 
     },
+    // resets game counter and loads next question
     nextQuestion: function(){
         game.counter = 30;
         $("#timeLapse").html("time remaining: " + game.counter);
@@ -95,6 +102,8 @@ var game = {
         game.loadQuestion();
 
     },
+    // clears time interval and incriments the game unanswered score, then displays out of time to user
+    // also displays correct answer for user, if the user never answers.
     timeUp: function(){
         clearInterval(timer);
         game.unanswered++;
@@ -106,6 +115,7 @@ var game = {
             setTimeout(game.nextQuestion,3*1000);
         }
     },
+    // displays the results at the end of the game, also includes a reset button
     results: function(){
         clearInterval(timer);
         $("#questionAnswer").html("ALL DONE!");
@@ -115,6 +125,9 @@ var game = {
         $("#questionAnswer").append("<br>"+"</br>"+"<button id='reset'>RESET</button>");
 
     },
+    // comparison statement that comares the clicked answer to the correct answer.
+    // also includes if else statement which runs the function depending on if the 
+    // user is correct or not
     clicked:function(e){
         clearInterval(timer);
         var correctAnswerDisplay = questions[game.currentQuestion].correctAnswer
@@ -131,6 +144,9 @@ var game = {
         }
 
     },
+    // if the user answered correctly, this function is run.
+    // This function displays good job on the page, incriments the right score
+    // and also sets timeout before moving onto the next question.
     answeredCorrectly: function(){
         console.log("GOOD JOB!");
         clearInterval(timer);
@@ -143,6 +159,9 @@ var game = {
         }
 
     },
+     // if the user answered incorrectly, this function is run.
+    // This function displays good job on the page, incriments the wrong score
+    // and also sets timeout before moving onto the next question.
     answeredIncorrectly: function(){
         console.log("TRY AGAIN");
         clearInterval(timer);
@@ -156,6 +175,7 @@ var game = {
         }
 
     },
+    // resets all the values for the player to play a new round
     reset: function(){
         game.currentQuestion = 0;
         game.counter = 30;
