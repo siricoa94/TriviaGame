@@ -34,7 +34,7 @@ var questions = [{
     correctAnswer: "2000",
 },
 {
-    question: "about how many times does lightning strike the earth a second? and it never strikes the same spot twice?",
+    question: "about how many times does lightning strike the earth a second?",
     answers: ["1","10","50","100"],
     correctAnswer: "100",
 },
