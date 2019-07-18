@@ -25,7 +25,8 @@ var questions = [{
     correctAnswer: "the sahara",
 },
 {
-    question: "Walk ten miles south, ten miles west, and ten miles north. You end up in the same location that you started in, where are you?",
+    question: "Walk ten miles south, ten miles west, and ten miles north."+"<br>"+
+    "You end up in the same location that you started in, where are you?",
     answers: ["andy's house","the north pole","the equator","area 51"],
     correctAnswer: "the north pole",
 }];
@@ -33,13 +34,13 @@ var questions = [{
 var game = {
     questions:questions,
     currentQuestion:0,
-    counter: 5,
+    counter: 30,
     correct:0,
     incorrect:0,
     unanswered: 0,
     countdown: function(){
         game.counter--;
-        $("#timeLapse").html(game.counter);
+        $("#timeLapse").html("time remaining: " + game.counter);
         if(game.counter<=0){
             console.log("Time up!")
             game.timeUp();
@@ -48,6 +49,7 @@ var game = {
     },
     loadQuestion: function(){
         timer = setInterval(game.countdown, 1000);
+
         $("#questionAnswer").html("<h2>"+questions[game.currentQuestion].question+"</h2>");
         for(var i=0; i<questions[game.currentQuestion].answers.length;i++){
             $("#questionAnswer").append('<button class="answer-button" id="button' 
@@ -58,7 +60,7 @@ var game = {
     },
     nextQuestion: function(){
         game.counter = 30;
-        $("#timeLapse").html(game.counter);
+        $("#timeLapse").html("time remaining: " + game.counter);
         game.currentQuestion++;
         game.loadQuestion();
 
@@ -126,7 +128,7 @@ var game = {
     },
     reset: function(){
         game.currentQuestion = 0;
-        game.counter = 0;
+        game.counter = 30;
         game.correct= 0;
         game.incorrect = 0;
         game.unanswered = 0;
