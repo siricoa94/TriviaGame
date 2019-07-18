@@ -6,33 +6,37 @@ $(document).on("click",".answer-button",function(e){
     game.clicked(e);
 
 })
+$(document).on("click","#reset",function(){
+    game.reset();
+})
 var questions = [{
     question: "What River did George Washington Cross?",
     answers: ["the delaware","The Nile","The Passaic","The Tibris"],
     correctAnswer: "the delaware",
 },
 {
-    question: "What River did George Washington Cross?",
-    answers: ["The Delaware"],
-    correctAnswer: "The Delaware",
+    question: "How many sides does the great pyramid of Giza have?",
+    answers: ["four","six","eight","ten"],
+    correctAnswer: "eight",
 },
 {
-    question: "What River did George Washington Cross?",
-    answers: ["The Delaware"],
-    correctAnswer: "The Delaware",
+    question: "Which of these helps to fertilize the Amazon in South America",
+    answers: ["deforestation","fire","farming","the sahara"],
+    correctAnswer: "the sahara",
 },
 {
-    question: "What River did George Washington Cross?",
-    answers: ["The Delaware"],
-    correctAnswer: "The Delaware",
+    question: "Walk ten miles south, ten miles west, and ten miles north. You end up in the same location that you started in, where are you?",
+    answers: ["andy's house","the north pole","the equator","area 51"],
+    correctAnswer: "the north pole",
 }];
 
 var game = {
     questions:questions,
     currentQuestion:0,
-    counter: 30,
+    counter: 5,
     correct:0,
     incorrect:0,
+    unanswered: 0,
     countdown: function(){
         game.counter--;
         $("#timeLapse").html(game.counter);
@@ -61,17 +65,33 @@ var game = {
     },
     timeUp: function(){
         clearInterval(timer);
+        game.unanswered++;
         $("#timeLapse").html("<h2>OUT OF TIME</h2>");
-        $("#questionAnswer").append("<h3>The Correct Answer was: "+questions.game.currentQuestion.correctAnswer +"</h3>");
-
+        $("#questionAnswer").html("<h3>The Correct Answer was: "+questions[game.currentQuestion].correctAnswer +"</h3>");
+        if(game.currentQuestion==questions.length-1){
+            setTimeout(game.results,3*1000);
+        } else {
+            setTimeout(game.nextQuestion,3*1000);
+        }
     },
     results: function(){
+        clearInterval(timer);
+        $("#questionAnswer").html("ALL DONE!");
+        $("#questionAnswer").append("Correct: "+game.correct);
+        $("#questionAnswer").append("Incorrect: "+game.incorrect);
+        $("#questionAnswer").append("Unanswered: "+game.unanswered);
+        $("#questionAnswer").append("<button id='reset'>RESET</button>");
 
     },
     clicked:function(e){
         clearInterval(timer);
-        if($(e.target).data("name")==questions[game.currentQuestion].
-        correctAnswer){
+        var correctAnswerDisplay = questions[game.currentQuestion].correctAnswer
+        var comparison = $(e.target).data("name")
+        console.log(correctAnswerDisplay);
+        console.log(comparison);
+        console.log($(e.target).data("name"))
+        if($(e.target).data("name")==questions[game.currentQuestion].correctAnswer)
+        {
             game.answeredCorrectly();
 
         } else {
@@ -105,6 +125,12 @@ var game = {
 
     },
     reset: function(){
+        game.currentQuestion = 0;
+        game.counter = 0;
+        game.correct= 0;
+        game.incorrect = 0;
+        game.unanswered = 0;
+        game.loadQuestion();
 
     },
 
