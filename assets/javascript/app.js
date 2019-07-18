@@ -11,24 +11,54 @@ $(document).on("click","#reset",function(){
 })
 var questions = [{
     question: "What River did George Washington Cross?",
-    answers: ["the delaware","The Nile","The Passaic","The Tibris"],
-    correctAnswer: "the delaware",
+    answers: ["the Delaware","The Nile","The Passaic","The Tibris"],
+    correctAnswer: "the Delaware",
 },
 {
     question: "How many sides does the great pyramid of Giza have?",
-    answers: ["four","six","eight","ten"],
-    correctAnswer: "eight",
+    answers: ["Four","Six","Eight","Ten"],
+    correctAnswer: "Eight",
 },
 {
     question: "Which of these helps to fertilize the Amazon in South America",
-    answers: ["deforestation","fire","farming","the sahara"],
-    correctAnswer: "the sahara",
+    answers: ["Deforestation","Fire","Farming","The Sahara"],
+    correctAnswer: "The Sahara",
+},
+{
+    question: "About how many nuclear detonation tests have occured since 1945? ",
+    answers: ["100","1000","2000","10,000"],
+    correctAnswer: "2000",
+},
+{
+    question: "about how many times does lightning strike the earth a second? and it never strikes the same spot twice?",
+    answers: ["1","10","50","100"],
+    correctAnswer: "100",
+},
+{
+    question: "What color is the only type of fresh water Dolphin?",
+    answers: ["Green","Blue","Red","Pink"],
+    correctAnswer: "Pink",
+},
+{
+    question: "What month did the Romans hate the most",
+    answers: ["February","March","June","December"],
+    correctAnswer: "February",
+},
+{
+    question: "What is the most popular street name in America",
+    answers: ["Main","2nd","Park Ave","Washington"],
+    correctAnswer: "Main",
+},
+{
+    question: "What point in the sky never moves",
+    answers: ["The north star","The sun","The moon","The sky itself"],
+    correctAnswer: "The north star",
 },
 {
     question: "Walk ten miles south, ten miles west, and ten miles north."+"<br>"+
     "You end up in the same location that you started in, where are you?",
-    answers: ["andy's house","the north pole","the equator","area 51"],
-    correctAnswer: "the north pole",
+    answers: ["Andy's house","The north pole","The equator","Area 51"],
+    correctAnswer: "The north pole",
 }];
 
 var game = {
@@ -52,8 +82,8 @@ var game = {
 
         $("#questionAnswer").html("<h2>"+questions[game.currentQuestion].question+"</h2>");
         for(var i=0; i<questions[game.currentQuestion].answers.length;i++){
-            $("#questionAnswer").append('<button class="answer-button" id="button' 
-            + i + '"data-name"'+questions[game.currentQuestion].answers[i]+'">'+questions[game.
+            $("#questionAnswer").append("<br>"+"</br>"+'<button class="answer-button" id="button' 
+            + i + '"data-name="'+questions[game.currentQuestion].answers[i]+'">'+questions[game.
                 currentQuestion].answers[i]+'</button>');
         }
 
@@ -79,10 +109,10 @@ var game = {
     results: function(){
         clearInterval(timer);
         $("#questionAnswer").html("ALL DONE!");
-        $("#questionAnswer").append("Correct: "+game.correct);
-        $("#questionAnswer").append("Incorrect: "+game.incorrect);
-        $("#questionAnswer").append("Unanswered: "+game.unanswered);
-        $("#questionAnswer").append("<button id='reset'>RESET</button>");
+        $("#questionAnswer").append("<br>"+"</br>"+"Correct: "+game.correct);
+        $("#questionAnswer").append("<br>"+"</br>"+"Incorrect: "+game.incorrect);
+        $("#questionAnswer").append("<br>"+"</br>"+"Unanswered: "+game.unanswered);
+        $("#questionAnswer").append("<br>"+"</br>"+"<button id='reset'>RESET</button>");
 
     },
     clicked:function(e){
@@ -137,89 +167,3 @@ var game = {
     },
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// $(document).ready(function () { 
-
-//     var timerNumber = 5;
-//     var intervalId = 0;
-//     var string="";
-//     var delay = 1000;
-
-//     var questionArray = [
-//         {
-//             question: "What river is George Washington known for crossing?",
-//             answerOne: "The Potomec",
-//             answerTwo: "River Thames",
-//             answerThree: "The Nile",
-//             answerFour: "The Delaware"
-//         },
-//             {
-//                 question: "What did Abraham Lincoln apparently grow up in?",
-//                 answerOne: "A penthouse overlooking central park",
-//                 answerTwo: "A cave",
-//                 answerThree: "On a farm",
-//                 answerFour: "In a log cabin"
-//         }
-//     ]
-//     var correctAnswerObject = {
-//         questionOne: "answerFour",
-//         questionTwo: "answerFour"
-//     }
-//     console.log(questionArray);
-
-        
-
-//     $("#question").text("Start")
-//     $("#question").on("click" , function () {
-//         for(i = 0; i < questionArray.length; i++){
-//             console.log(questionArray[i])
-
-//         }
-    
-    
-    
-    
-    
-    
-    
-    
-
-//     })   
-// })
-    // console.log(questionArray);
-    // $("#question").text(questionArray[0].question);
-    // $("#answerOne").text(questionArray[0].answerOne);
-    // $("#answerTwo").text(questionArray[0].answerTwo);
-    // $("#answerThree").text(questionArray[0].answerThree);
-    // $("#answerFour").text(questionArray[0].answerFour);
