@@ -11,3 +11,5 @@ the number of times in each category that the user scored in.
 Many challenges came with this assignment as it was my first real Javascript challenge. There are
 still things I would like to do with this program in the future with more knowledge and skill. Some of the problems I initially encountered were based on the structure of my code and how I would loop through the information. Another challenge I faced was storing the data-name value inside each button. This proved challenging to understand and hard to debug when I ran into issues.
 Link: https://siricoa94.github.io/TriviaGame/
+
+![Screenshot (12)](https://user-images.githubusercontent.com/50495407/68342196-14baf280-00b8-11ea-9bf7-b7fdf7ddeed6.png)
